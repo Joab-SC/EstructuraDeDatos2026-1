@@ -31,7 +31,23 @@ public class MaxNumber {
         return arr[index] > maxExcedent?arr[index]:maxExcedent;
     }
 
-    public static void main(String[] args) {
-        System.out.println(findMaxNumber(new int[]{4,1,6,10,2,0,18,3, 21, 22, 80,1,0,2, 100}));
+    public static int findMaxNumber3(int[] arr){
+        return  findMaxNumber3(arr, 0, arr.length-1);
     }
+
+    public static int findMaxNumber3(int[] arr, int start, int end){
+        if(start == end){
+            return arr[end];
+        }
+        int middle = (start+end)/2;
+        int maxLeft = findMaxNumber(arr, start, middle);
+        int maxRight = findMaxNumber(arr, middle+1, end);
+        return maxLeft>maxRight?maxLeft:maxRight;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(findMaxNumber3(new int[]{4,1,6,10,2,0,18,3, 21, 22, 80,1,0,2}));
+    }
+
+
 }
