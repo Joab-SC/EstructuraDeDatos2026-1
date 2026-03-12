@@ -5,12 +5,15 @@ import java.util.*;
 
 public class sortComparator {
     public static void main(String[] args){
-        Cliente cliente = new Cliente("Joab", 18);
-        Cliente cliente1 = new Cliente("Laura", 19);
-        Cliente cliente2 = new Cliente("Maicol", 10);
+        Client cliente = new Client("Joab", 18, "Rojo");
+        Client cliente1 = new Client("Laura", 19, "Amarillo");
+        Client cliente2 = new Client("Maicol", 10, "Verde");
+        Client cliente3 = new Client("Sharick", 10, "Amarillo");
+        Client cliente4 = new Client("Santiago", 10, "Rojo");
 
-        ArrayList<Cliente> clientes = new ArrayList<>(List.of(cliente, cliente1, cliente2));
-        Collections.sort(clientes, new ordenEdadCliente());
+
+        ArrayList<Client> clientes = new ArrayList<>(List.of(cliente, cliente1, cliente2, cliente3, cliente4));
+        Collections.sort(clientes);
         System.out.println(clientes);
     }
 }

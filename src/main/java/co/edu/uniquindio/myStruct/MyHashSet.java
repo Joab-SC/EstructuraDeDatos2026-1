@@ -43,12 +43,27 @@ public class MyHashSet<T> {
         }
     }
 
+
+
     private void rehash(){
         for(MyNode<T> node: tempArr){
             System.out.println(node);
             index = calculateIndex(node.getElement());
             arr[index] = node;
         }
+    }
+
+    public boolean contains(T el){
+        int index = calculateIndex(el);
+        MyNode current = arr[index];
+        while(current != null){
+            if (current.getElement().equals(el)){
+                return true;
+            }
+            current = current.getNext();
+        }
+        return false;
+
     }
 
 
@@ -102,6 +117,7 @@ public class MyHashSet<T> {
         mihash.add("Daniel");
 
         System.out.println(mihash);
+        System.out.println(mihash.contains("jinner"));
     }
 
 }
