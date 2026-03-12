@@ -12,4 +12,13 @@ public class Product {
     private String code;
     private String name;
     private Double price;
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "code='" + code + '\'' +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }

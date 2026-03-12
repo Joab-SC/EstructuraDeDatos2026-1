@@ -13,7 +13,7 @@ public class MainPatients{
         Hospital hospital = new Hospital();
         List<Patient> patients = PatientGenerator.generate(999);
         Benchmark.run("Register 1000 patients", () -> {
-            // Tu programa aquí
+
             for(Patient patient: patients){
                 try{
                     hospital.registerPatient(patient);
