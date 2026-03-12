@@ -15,7 +15,7 @@ public class MainPlatform {
             for (Request request : requests) {
                 try {
                     platform.addRequest(request);
-                } catch (Exception e) {
+                } catch (RuntimeException e) {
                     continue;
                 }
             }

@@ -13,7 +13,7 @@ public class MainSales {
             for (Product product : products) {
                 try {
                     sale.addProduct(product);
-                } catch (Exception e) {
+                } catch (RuntimeException e) {
                     continue;
                 }
             }

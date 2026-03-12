@@ -19,6 +19,9 @@ import java.util.*;
     }
 
     public void addProduct(Product product) {
+        if(productHashMap.get(product.getCode()) != null){
+            throw new RuntimeException("There is already a product with that id");
+        }
         productHashMap.put(product.getCode(), product);
         productTreeMap
                 .computeIfAbsent(product.getPrice(), k -> new ArrayList<>())

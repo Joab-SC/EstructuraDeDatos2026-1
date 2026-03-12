@@ -13,7 +13,13 @@ public class MainCatalog {
 
         Benchmark.run("Add 10,000 products", () -> {
             for (Product product : products) {
-                catalog.addProduct(product);
+                try{
+                    catalog.addProduct(product);
+                }
+                catch (RuntimeException e){
+                    continue;
+                }
+
             }
 
             catalog.addProduct(new Product("P999999", "Special Laptop", 999.99));
@@ -23,8 +29,6 @@ public class MainCatalog {
             System.out.println(catalog.findProduct("P999999"));
         });
 
-        Benchmark.run("Show products sorted by price", () -> {
-            catalog.showProductsByPrice();
-        });
+        Benchmark.run("Show products sorted by price", catalog::showProductsByPrice);
     }
 }

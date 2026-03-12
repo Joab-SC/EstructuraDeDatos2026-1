@@ -17,7 +17,7 @@ public class MainPatients{
             for(Patient patient: patients){
                 try{
                     hospital.registerPatient(patient);
-                }catch (Exception e){
+                }catch (RuntimeException e){
                     continue;
                 }
             }
