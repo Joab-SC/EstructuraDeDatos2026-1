@@ -15,9 +15,9 @@ public class Sale {
         this.productHashMapByCategory = new HashMap<>();
     }
 
-    public void addProduct(Product product) {
+    public void addProduct(Product product) throws Exception {
         if(findProduct(product.getCode()) != null){
-            throw new RuntimeException("There is already a product with that id");
+            throw new Exception("There is already a product with that id");
         }
         productList.addFirst(product);
         productHashMap.put(product.getCode(), product);

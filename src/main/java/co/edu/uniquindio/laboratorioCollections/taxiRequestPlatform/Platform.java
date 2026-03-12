@@ -10,9 +10,9 @@ public class Platform {
         this.requests = new LinkedHashMap<>();
     }
 
-    public void addRequest(Request request) {
+    public void addRequest(Request request) throws Exception {
         if(requests.get(request.getCode()) != null){
-            throw new RuntimeException("There is already a request with that Id");
+            throw new Exception("There is already a request with that Id");
         }
         requests.put(request.getCode(), request);
     }

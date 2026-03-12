@@ -15,11 +15,15 @@ public class MainPlatform {
             for (Request request : requests) {
                 try {
                     platform.addRequest(request);
-                } catch (RuntimeException e) {
+                } catch (Exception e) {
                     continue;
                 }
             }
-            platform.addRequest(new Request("R999999", "Downtown"));
+            try{
+                platform.addRequest(new Request("R999999", "Downtown"));
+            } catch (Exception e) {
+            }
+
         });
 
         Benchmark.run("Serve first request", () -> {

@@ -13,11 +13,15 @@ public class MainSales {
             for (Product product : products) {
                 try {
                     sale.addProduct(product);
-                } catch (RuntimeException e) {
+                } catch (Exception e) {
                     continue;
                 }
             }
-            sale.addProduct(new Product("P999999", 500, "Electronics"));
+            try{
+                sale.addProduct(new Product("P999999", 500, "Electronics"));
+            } catch (Exception e) {
+            }
+
         });
 
         Benchmark.run("Find a product by code", () -> {

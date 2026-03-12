@@ -17,9 +17,9 @@ public class Hospital {
         this.patientsMap = new HashMap<>();
     }
 
-    public void registerPatient(Patient patient){
+    public void registerPatient(Patient patient) throws Exception {
         if(findPatient(patient.getId()) != null){
-            throw new RuntimeException("There is already a patient with that id");
+            throw new Exception("There is already a patient with that id");
         }
         patientsQueue.add(patient);
         patientsMap.put(patient.getId(), patient);

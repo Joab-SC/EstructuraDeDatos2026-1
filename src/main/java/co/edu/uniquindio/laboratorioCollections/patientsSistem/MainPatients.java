@@ -17,11 +17,15 @@ public class MainPatients{
             for(Patient patient: patients){
                 try{
                     hospital.registerPatient(patient);
-                }catch (RuntimeException e){
+                }catch (Exception e){
                     continue;
                 }
             }
-            hospital.registerPatient(new Patient("Laura", "109246761", LocalTime.of(10,10,10), true));
+            try{
+                hospital.registerPatient(new Patient("Laura", "109246761", LocalTime.of(10,10,10), true));
+            } catch (Exception e) {
+            }
+
         });
 
         Benchmark.run("Find an element ",() -> {

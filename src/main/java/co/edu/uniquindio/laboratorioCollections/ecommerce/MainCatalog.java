@@ -16,13 +16,16 @@ public class MainCatalog {
                 try{
                     catalog.addProduct(product);
                 }
-                catch (RuntimeException e){
+                catch (Exception e){
                     continue;
                 }
 
             }
+            try{
+                catalog.addProduct(new Product("P999999", "Special Laptop", 999.99));
+            } catch (Exception e) {
+            }
 
-            catalog.addProduct(new Product("P999999", "Special Laptop", 999.99));
         });
 
         Benchmark.run("Find product by code", () -> {
