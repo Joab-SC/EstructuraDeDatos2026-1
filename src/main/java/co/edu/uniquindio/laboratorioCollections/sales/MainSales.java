@@ -7,7 +7,7 @@ import java.util.List;
 public class MainSales {
     public static void main(String[] args) throws InterruptedException {
         Sale sale = new Sale();
-        List<Product> products = ProductGenerator.generate(9999);
+        List<Product> products = ProductGenerator.generate(99999999);
 
         Benchmark.run("Add 10,000 products", () -> {
             for (Product product : products) {

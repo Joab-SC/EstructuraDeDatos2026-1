@@ -12,7 +12,7 @@ public class PairList <T extends Pair<K,V>, K, V> {
         pairs.add(pair);
     }
     public void eliminarPar(K key){
-        pairs.removeIf(par -> {return par.getKey().equals(key);});
+        pairs.removeIf(par -> par.getKey().equals(key));
     }
     public ArrayList<T> obtenerPares(){
         return pairs;

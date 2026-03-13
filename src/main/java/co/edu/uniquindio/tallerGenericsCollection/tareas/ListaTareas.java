@@ -1,6 +1,7 @@
 package co.edu.uniquindio.tallerGenericsCollection.tareas;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.stream.Collectors;
 
 public class ListaTareas<T extends Tarea> {
@@ -14,7 +15,7 @@ public class ListaTareas<T extends Tarea> {
     }
 
     public void ordenarTareas(){
-        listaTareas.sort(Tarea::compareTo);
+        Collections.sort(listaTareas, Tarea::compareTo);
     }
 
     public ArrayList<T> obtenerPrioridad(int prioridad){
