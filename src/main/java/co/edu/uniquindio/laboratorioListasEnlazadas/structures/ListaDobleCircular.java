@@ -89,4 +89,101 @@ public class ListaDobleCircular<T> {
 		System.out.println();
 	}
 
+	public T siguiente(T datoActual) {
+		NodoDoble<T> aux = nodoPrimero;
+
+		for (int i = 0; i < tamanio; i++) {
+			if (aux.getValorNodo().equals(datoActual)) {
+				return aux.getSiguienteNodo().getValorNodo();
+			}
+			aux = aux.getSiguienteNodo();
+		}
+
+		throw new RuntimeException("No encontrado el dato");
+	}
+
+	public T anterior(T datoActual) {
+		NodoDoble<T> aux = nodoPrimero;
+
+		for (int i = 0; i < tamanio; i++) {
+			if (aux.getValorNodo().equals(datoActual)) {
+				return aux.getAnteriorNodo().getValorNodo();
+			}
+			aux = aux.getSiguienteNodo();
+		}
+
+		throw new RuntimeException("No encontrado el dato");
+	}
+
+	public T obtenerValorNodo(int indice) {
+
+		NodoDoble<T> nodoTemporal = null;
+		int contador = 0;
+
+		if (indiceValido(indice)) {
+			nodoTemporal = nodoPrimero;
+			while (contador < indice) {
+				nodoTemporal = nodoTemporal.getSiguienteNodo();
+				contador++;
+			}
+		}
+
+		return (nodoTemporal != null) ? nodoTemporal.getValorNodo() : null;
+	}
+
+	private boolean indiceValido(int indice) {
+		if (indice >= 0 && indice < tamanio) return true;
+		throw new RuntimeException("Índice no válido");
+	}
+
+	public int getTamanio() {
+		return tamanio;
+	}
+
+	public T eliminar(T dato) {
+
+		if (estaVacia()) throw new RuntimeException("Lista vacía");
+
+		// Buscar el nodo a eliminar
+		NodoDoble<T> nodo = nodoPrimero;
+		boolean encontrado = false;
+
+		for (int i = 0; i < tamanio; i++) {
+			if (nodo.getValorNodo().equals(dato)) {
+				encontrado = true;
+				break;
+			}
+			nodo = nodo.getSiguienteNodo();
+		}
+
+		if (!encontrado) throw new RuntimeException("El elemento no existe");
+
+		if (tamanio == 1) {
+			// Único elemento
+			nodoPrimero = null;
+			nodoUltimo = null;
+
+		} else if (nodo == nodoPrimero) {
+			// Eliminar el primero
+			nodoPrimero = nodoPrimero.getSiguienteNodo();
+			nodoPrimero.setAnteriorNodo(nodoUltimo);
+			nodoUltimo.setSiguienteNodo(nodoPrimero);
+
+		} else if (nodo == nodoUltimo) {
+			// Eliminar el último
+			nodoUltimo = nodoUltimo.getAnteriorNodo();
+			nodoUltimo.setSiguienteNodo(nodoPrimero);
+			nodoPrimero.setAnteriorNodo(nodoUltimo);
+
+		} else {
+			// Eliminar del medio
+			NodoDoble<T> anterior  = nodo.getAnteriorNodo();
+			NodoDoble<T> siguiente = nodo.getSiguienteNodo();
+			anterior.setSiguienteNodo(siguiente);
+			siguiente.setAnteriorNodo(anterior);
+		}
+
+		tamanio--;
+		return dato;
+	}
 }
