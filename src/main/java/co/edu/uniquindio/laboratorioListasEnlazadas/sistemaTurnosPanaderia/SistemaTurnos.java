@@ -14,7 +14,7 @@ public class SistemaTurnos {
         clientes.agregarfinal(cliente);
     }
 
-    public Cliente atenderCliente(Cliente cliente){
+    public Cliente atenderCliente(){
         return clientes.eliminarPrimero();
     }
 
