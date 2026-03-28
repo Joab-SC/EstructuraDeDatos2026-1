@@ -135,8 +135,43 @@ public class ListaDoble<T> implements Iterable<T> {
 	
 	//Verificar si la lista esta vacia
 	public boolean estaVacia() {
-//		return(nodoPrimero == null)?true:false;
 		return nodoPrimero == null && nodoUltimo == null;
+	}
+
+	public void eliminarDespuesDe(T dato) {
+
+		NodoDoble<T> actual = buscarNodo(dato);
+
+		if (actual == null || actual.getSiguienteNodo() == null) {
+			return;
+		}
+		NodoDoble<T> nodoEliminar = actual.getSiguienteNodo();
+		while (nodoEliminar != null) {
+			NodoDoble<T> siguiente = nodoEliminar.getSiguienteNodo();
+			nodoEliminar.setAnteriorNodo(null);
+			nodoEliminar.setSiguienteNodo(null);
+
+			nodoEliminar = siguiente;
+			tamanio--;
+		}
+		actual.setSiguienteNodo(null);
+		nodoUltimo = actual;
+	}
+
+	public T obtenerSiguiente(T dato) {
+		NodoDoble<T> actual = buscarNodo(dato);
+		if (actual == null || actual.getSiguienteNodo() == null) {
+			return null;
+		}
+		return actual.getSiguienteNodo().getValorNodo();
+	}
+
+	public T obtenerAnterior(T dato) {
+		NodoDoble<T> actual = buscarNodo(dato);
+		if (actual == null || actual.getAnteriorNodo() == null) {
+			return null;
+		}
+		return actual.getAnteriorNodo().getValorNodo();
 	}
 
 	
